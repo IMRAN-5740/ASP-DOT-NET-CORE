@@ -1,0 +1,41 @@
+﻿@model List<UniversityApp.Models.Student>
+@{
+    ViewData["Title"] = "GetAllStudent";
+    int serialNo = 1;
+    List<Student> studentList = (List < Student > )ViewBag.BindAllStudent;
+}
+<style>
+    h1{
+        text-align:center;
+    }
+</style>
+<h1>Student Information List</h1>
+<table class="table table-bordered">
+    <thead>
+     <th>Serial No:</th>
+    <th>Student Name:</th>
+    <th>Email:</th>
+    <th>Registration No:</th>
+    <th>Address:</th>
+    <th>Department:</th>
+    </thead>
+    <tbody>
+        @foreach (var data in Model)
+        {
+
+            <tr>
+                <td>@(serialNo++)</td>
+                <td>@data.StudentName</td>
+                <td>@data.Email</td>
+                <td>@data.RegNo</td>
+                <td>@data.Address</td>
+                <td>@data.Department</td>
+            </tr>
+
+        }
+    </tbody>
+    
+   
+
+</table>
+

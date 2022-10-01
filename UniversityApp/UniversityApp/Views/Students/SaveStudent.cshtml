@@ -1,0 +1,72 @@
+﻿@model UniversityApp.Models.Student
+@{
+    ViewData["Title"] = "SaveStudent";
+    //List<Student> studentList = (List<Student>)ViewBag.Students;
+    int serialNo = 1;
+}
+<style>
+    h2 {
+        text-align: center;
+    }
+</style>
+<h2>Student Save Form</h2>
+<h3>@ViewBag.Message</h3>
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <table class="table table-bordered">
+        
+        
+
+     
+        <tr>
+            <td>@Html.LabelFor(c=>c.StudentName)</td>
+            <td>@Html.TextBoxFor(c=>c.StudentName,new {@class="form-control"})</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c=>c.Email)</td>
+            <td>@Html.TextBoxFor(c=>c.Email,new {@class="form-control"})</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c=>c.RegNo)</td>
+            <td>@Html.TextBoxFor(c=>c.RegNo,new {@class="form-control"})</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c=>c.Address)</td>
+            <td>@Html.TextBoxFor(c=>c.Address,new {@class="form-control"})</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c=>c.Department)</td>
+            <td>@Html.DropDownListFor(c=>c.Department,new SelectList(ViewBag.Department),".....Select....",new {@class="form-control"})</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Save Data"/></td>
+        </tr>
+
+       
+    </table>
+    <table class="table table-bordered">
+        <thead>
+        <th>Serial No:</th>
+        <th>Student Name:</th>
+        <th>Email:</th>
+        <th>Registration No:</th>
+        <th>Address:</th>
+        <th>Department:</th>
+        </thead>
+        <tbody>
+        @foreach(var data in ViewBag.Students)
+        {
+            <tr>
+                <td>@(serialNo++)</td>
+                <td>@data.StudentName</td>
+                <td>@data.Email</td>
+                <td>@data.RegNo</td>
+                <td>@data.Address</td>
+                <td>@data.Department</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
