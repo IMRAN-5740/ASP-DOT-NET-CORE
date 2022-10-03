@@ -14,17 +14,20 @@
 @using (Html.BeginForm(FormMethod.Post))
 {
     <table class="table table-bordered">
-        
-        
 
-     
+
+
+      
         <tr>
+   
             <td>@Html.LabelFor(c=>c.StudentName)</td>
             <td>@Html.TextBoxFor(c=>c.StudentName,new {@class="form-control"})</td>
+            <td>@Html.ValidationMessageFor(c=>c.StudentName)</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(c=>c.Email)</td>
             <td>@Html.TextBoxFor(c=>c.Email,new {@class="form-control"})</td>
+            <td>@Html.ValidationMessageFor(c=>c.Email)</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(c=>c.RegNo)</td>
@@ -35,8 +38,8 @@
             <td>@Html.TextBoxFor(c=>c.Address,new {@class="form-control"})</td>
         </tr>
         <tr>
-            <td>@Html.LabelFor(c=>c.Department)</td>
-            <td>@Html.DropDownListFor(c=>c.Department,new SelectList(ViewBag.Department),".....Select....",new {@class="form-control"})</td>
+            <td>@Html.LabelFor(c=>c.DepartmentName)</td>
+            <td>@Html.DropDownListFor(c=>c.DepartmentId,new SelectList(ViewBag.Department,"Id","DeptShortName"),"....Select....",new {@class="form-control"})</td>
         </tr>
         <tr>
             <td></td>
@@ -47,12 +50,12 @@
     </table>
     <table class="table table-bordered">
         <thead>
-        <th>Serial No:</th>
-        <th>Student Name:</th>
-        <th>Email:</th>
-        <th>Registration No:</th>
-        <th>Address:</th>
-        <th>Department:</th>
+        <th>Serial No</th>
+        <th>Student Name</th>
+        <th>Email</th>
+        <th>Reg No</th>
+        <th>Address</th>
+        <th>Department Name</th>
         </thead>
         <tbody>
         @foreach(var data in ViewBag.Students)
@@ -63,7 +66,7 @@
                 <td>@data.Email</td>
                 <td>@data.RegNo</td>
                 <td>@data.Address</td>
-                <td>@data.Department</td>
+                <td>@data.DepartmentName</td>
             </tr>
         }
         </tbody>

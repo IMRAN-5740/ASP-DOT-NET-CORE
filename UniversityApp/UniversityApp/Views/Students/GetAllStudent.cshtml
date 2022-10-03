@@ -12,12 +12,12 @@
 <h1>Student Information List</h1>
 <table class="table table-bordered">
     <thead>
-     <th>Serial No:</th>
-    <th>Student Name:</th>
-    <th>Email:</th>
-    <th>Registration No:</th>
-    <th>Address:</th>
-    <th>Department:</th>
+     <th>Serial No</th>
+    <th>Student Name</th>
+    <th>Email</th>
+    <th>Reg No</th>
+    <th>Address</th>
+    <th>Department Name</th>
     </thead>
     <tbody>
         @foreach (var data in Model)
@@ -29,7 +29,7 @@
                 <td>@data.Email</td>
                 <td>@data.RegNo</td>
                 <td>@data.Address</td>
-                <td>@data.Department</td>
+                <td>@data.DepartmentName</td>
             </tr>
 
         }

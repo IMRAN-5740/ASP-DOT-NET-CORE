@@ -11,5 +11,9 @@ namespace UniversityApp.Manager
         {
             return aGateway.GetStudents();
         }
+        public List<Department>GetDepartments()
+        {
+            return aGateway.GetDepartments();
+        }
     }
 }

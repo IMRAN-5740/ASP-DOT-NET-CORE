@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "A2sNoX5wOizp6W8jFEg1s6i06SCc0TFVV7nqc8E8UWD/j7ZGLtgiDw63QksJekXOaCex1SQeUXrBJU0s7tszhQ==",
+  "dgSpecHash": "hy6Lu4PBJeENVfPeCYChqtiegGjlRoX1J1feT8dGUMTZqoVTybXsBr2o0tSEqUmsgxI6hXS+E/gkYZbsMKX+pw==",
   "success": true,
   "projectFilePath": "E:\\ASP DOT NET CORE\\UniversityApp\\UniversityApp\\UniversityApp.csproj",
   "expectedPackageFiles": [
@@ -118,7 +118,10 @@
     "C:\\Users\\Mohammad Imran\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.3\\system.threading.tasks.extensions.4.5.3.nupkg.sha512",
     "C:\\Users\\Mohammad Imran\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Mohammad Imran\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\Mohammad Imran\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\Mohammad Imran\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Mohammad Imran\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
+    "C:\\Users\\Mohammad Imran\\.nuget\\packages\\xunit.extensibility.core\\2.4.2\\xunit.extensibility.core.2.4.2.nupkg.sha512",
+    "C:\\Users\\Mohammad Imran\\.nuget\\packages\\xunit.extensibility.execution\\2.4.2\\xunit.extensibility.execution.2.4.2.nupkg.sha512"
   ],
   "logs": []
 }

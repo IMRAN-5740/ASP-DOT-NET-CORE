@@ -14,7 +14,7 @@ namespace UniversityApp.Controllers
             student.Email = "imranbsmrstucse@gmail.com";
             student.RegNo = "2018";
             student.Address = "Satana Baluya,Gobindaganj,Gaibandha";
-            student.Department = "Computer Science and Engineering";
+            student.DepartmentId = 1;
             ViewBag.Student = student;
             return View("Index");
         }
@@ -22,46 +22,51 @@ namespace UniversityApp.Controllers
         public ActionResult SaveStudent()
         {
             StudentManager studentManager = new StudentManager();
-            ViewBag.Department = GetDepartments();
+            ViewBag.Department = studentManager.GetDepartments();
             ViewBag.Students = studentManager.GetStudents();
             return View();
         }
 
         [HttpPost]
-        public string SaveStudent(Student student)
+        public ActionResult SaveStudent(Student student)
         {
-            StudentManager studentManager = new StudentManager();
+           
+            StudentManager studentManager = new StudentManager(); 
             string message = "";
-            string connectionString = null;
-            connectionString = "Data Source=MOHAMMAD-IMRAN;Initial Catalog=UniversityApp;User ID=sa;Password=imran";
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-            string Query = "INSERT INTO Student_data (StudentName,Email,RegNo,Address,Department) " +
-                "VALUES('" + student.StudentName + "','" + student.Email + "','" + student.RegNo + "','" + student.Address + "','" + student.Department + "')";
-            SqlCommand command = new SqlCommand(Query, connection);
-            int rowCount = command.ExecuteNonQuery();
-            if (rowCount > 0)
+            if(ModelState.IsValid)
             {
-                // return "Data Saved Successfully";
-                message = "Data Saved Successfully";
+               
+                string connectionString = null;
+                connectionString = "Data Source=MOHAMMAD-IMRAN;Initial Catalog=UniversityApp;User ID=sa;Password=imran";
+                SqlConnection connection = new SqlConnection(connectionString);
+                connection.Open();
+                string Query = "INSERT INTO Student_data (StudentName,Email,RegNo,Address,DepartmentId) " +
+                    "VALUES('" + student.StudentName + "','" + student.Email + "','" + student.RegNo + "','" + student.Address + "','" + student.DepartmentId + "')";
+                SqlCommand command = new SqlCommand(Query, connection);
+                int rowCount = command.ExecuteNonQuery();
+                if (rowCount > 0)
+                {
+                    message = "Data Saved Successfully";
+                }
+                else
+                {
+                    message = "Data Not Saved";
+                }
+                connection.Close();
             }
-            else
-            {
-                //return "Data Not Saved";
-                message = "Data Not Saved";
-            }
-            connection.Close();
+            
+            
             
 
-            ViewBag.Department = GetDepartments();
+            ViewBag.Department = studentManager.GetDepartments();
             ViewBag.Students = studentManager.GetStudents();
-            return ViewBag.Message = message;
-            //return View();     
+            ViewBag.Message = message;
+            return View();     
         }
-        public List<string>GetDepartments()
-            {
-            return new List<string> { "CSE", "EEE", "ACCE", "CE", "FAE", "Architecture" };
-            }
+        //public List<string>GetDepartments()
+        //    {
+        //    return new List<string> { "CSE", "EEE", "ACCE", "CE", "FAE", "Architecture" };
+        //    }
         public ActionResult GetAllStudent()
         {
             ViewBag.BindAllStudent = BindAllStudent();
@@ -81,7 +86,7 @@ namespace UniversityApp.Controllers
             connectionString = "Data Source=MOHAMMAD-IMRAN;Initial Catalog=UniversityApp;User ID=sa;Password=imran";
             SqlConnection connection = new SqlConnection(connectionString);
 
-            string Query = "SELECT * FROM Student_data";
+            string Query = "SELECT * FROM vStudentInfo";
             SqlCommand command = new SqlCommand(Query, connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
@@ -94,7 +99,8 @@ namespace UniversityApp.Controllers
                 student.Email = reader["Email"].ToString();
                 student.RegNo = reader["RegNo"].ToString();
                 student.Address = reader["Address"].ToString();
-                student.Department = reader["Department"].ToString();
+                //student.DepartmentId = (int)reader["DepartmentId"]; 
+                student.DepartmentName = reader["DepartmentName"].ToString(); 
                 students.Add(student);
             }
             connection.Close();
