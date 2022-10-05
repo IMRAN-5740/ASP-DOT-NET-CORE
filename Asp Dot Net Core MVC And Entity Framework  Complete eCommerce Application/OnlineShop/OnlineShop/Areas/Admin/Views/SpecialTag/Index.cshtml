@@ -1,0 +1,80 @@
+﻿@using OnlineShop.Models;
+@model IEnumerable<SpecialTag>
+@{
+    ViewData["Title"] = "Index";
+    int serialNo = 1;
+}
+<style>
+    .table-info th {
+        text-align: center;
+    }
+</style>
+<br /><br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Special Tag List</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info"><i class="fa-solid fa-plus"></i>&nbsp; New Special Tag</a>
+    </div>
+</div>
+<br />
+
+
+
+<div>
+    <table class="table table-bordered">
+        <tr class="table-info">
+            <th>Serial No</th>
+            <th>@Html.DisplayNameFor(c=>c.SpecialTagName)</th>
+            <th>Action</th>
+
+        </tr>
+        @foreach (var data in Model)
+        {
+            <tr>
+               
+                <td>@(serialNo++)</td>
+                <td>@data.SpecialTagName</td>
+                
+                <partial name="_ButtonPartial" model="@data.Id" />                
+
+            </tr>
+        }
+
+    </table>
+</div>
+
+@section Scripts
+    {
+   
+    <script type="text/javascript">
+        $(function () {
+            var add = '@TempData["add"]'
+            if (add != '') {
+                alertify.success(add);
+
+            }
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            var edit = '@TempData["edit"]'
+            if (edit != '') {
+                alertify.warning(edit);
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            var done = '@TempData["done"]'
+            if (done != '') {
+                alertify.error(done);
+
+            }
+        })
+    </script>
+
+}
+
